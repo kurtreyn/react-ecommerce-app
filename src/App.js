@@ -1,5 +1,13 @@
+import React from 'react';
+import { Products, Navbar } from './components';
+
 function App() {
-  return <div className="App">Hi</div>;
+  return (
+    <>
+      <Navbar />
+      <Products />
+    </>
+  );
 }
 
 export default App;
