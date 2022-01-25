@@ -50,7 +50,3 @@ export default makeStyles((theme) => ({
     alignItems: 'center',
   },
 }));
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security

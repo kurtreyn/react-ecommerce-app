@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { commerce } from './lib/commerce';
-import { Products, Navbar, Cart } from './components';
+import { Products, Navbar, Cart, Checkout } from './components';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -53,13 +53,16 @@ function App() {
           <Route exact path="/">
             <Products products={products} onAddToCart={handleAddToCart} />
           </Route>
-          <Route exact path="/cart">
+          <Route path="/cart">
             <Cart
               cart={cart}
               handleUpdateCartQty={handleUpdateCartQty}
               handleRemoveFromCart={handleRemoveFromCart}
               handleEmptyCart={handleEmptyCart}
             />
+          </Route>
+          <Route path="/checkout">
+            <Checkout cart={cart} />
           </Route>
         </Switch>
       </div>
