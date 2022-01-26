@@ -59,6 +59,7 @@ const PaymentForm = ({
       };
 
       onCaptureCheckout(checkoutToken.id, orderData);
+      timeout();
 
       nextStep();
     }
