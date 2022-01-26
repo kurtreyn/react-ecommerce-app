@@ -44,6 +44,12 @@ function Checkout({ cart, order, onCaptureCheckout, error }) {
     }
   }, [cart]);
 
+  const timeout = () => {
+    setTimeout(() => {
+      setIsFinished(true);
+    }, 1000);
+  };
+
   const nextStep = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -55,12 +61,6 @@ function Checkout({ cart, order, onCaptureCheckout, error }) {
   const next = (data) => {
     setShippingData(data);
     nextStep();
-  };
-
-  const timeout = () => {
-    setTimeout(() => {
-      setIsFinished(true);
-    }, 3000);
   };
 
   const Form = () =>
@@ -92,7 +92,7 @@ function Checkout({ cart, order, onCaptureCheckout, error }) {
         </div>
         <br />
         <Button component={Link} variant="outlined" type="button" to="/">
-          Back to home
+          Back to Home
         </Button>
       </>
     ) : isFinished ? (
@@ -103,7 +103,7 @@ function Checkout({ cart, order, onCaptureCheckout, error }) {
         </div>
         <br />
         <Button component={Link} variant="outlined" type="button" to="/">
-          Back to home
+          Back to Home
         </Button>
       </>
     ) : (
