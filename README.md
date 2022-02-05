@@ -14,3 +14,6 @@ Number: 4242 4242 4242 4242
 Exp: 04/24
 CVC: 242
 Zip: 42424
+
+## Note:
+- There is a bug that appears after entering payment information. Initially a message is rendered thanking the user for their purchase. Then an error message will appear stating the given data was invalid. The console log of the error is "Failed to load resource: the server responded with a status of 422 (). 
