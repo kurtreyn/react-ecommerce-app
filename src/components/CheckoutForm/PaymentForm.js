@@ -6,7 +6,6 @@ import {
   ElementsConsumer,
 } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-
 import Review from './Review';
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
@@ -17,7 +16,7 @@ const PaymentForm = ({
   backStep,
   shippingData,
   onCaptureCheckout,
-  timeout,
+  // timeout,
 }) => {
   const handleSubmit = async (event, elements, stripe) => {
     event.preventDefault();
@@ -35,31 +34,32 @@ const PaymentForm = ({
       console.log('[error]', error);
     } else {
       const orderData = {
-        line_items: checkoutToken.live.line_items,
-        customer: {
-          firstname: shippingData.firstName,
-          lastname: shippingData.lastName,
-          email: shippingData.email,
-        },
-        shipping: {
-          name: 'International',
-          street: shippingData.address1,
-          town_city: shippingData.city,
-          county_state: shippingData.shippingSubdivision,
-          postal_zip_code: shippingData.zip,
-          country: shippingData.shippingCountry,
-        },
-        fulfillment: { shipping_method: shippingData.shippingOption },
         payment: {
           gateway: 'stripe',
           stripe: {
             payment_method_id: paymentMethod.id,
           },
         },
+        shipping: {
+          name: 'domestic',
+          street: shippingData.address,
+          town_city: shippingData.city,
+          county_state: shippingData.shippingSubdivision,
+          postal_zip_code: shippingData.zip,
+          country: shippingData.shippingCountry,
+        },
+        customer: {
+          firstname: shippingData.firstName,
+          lastname: shippingData.lastName,
+          email: shippingData.email,
+        },
+        line_items: checkoutToken.live.line_items,
+        fulfillment: { shipping_method: shippingData.shippingOption },
       };
-
+      console.log({ orderData });
+      console.log(`checkoutToken ID: ${checkoutToken.id}`);
       onCaptureCheckout(checkoutToken.id, orderData);
-      timeout();
+      // timeout();
       nextStep();
     }
   };

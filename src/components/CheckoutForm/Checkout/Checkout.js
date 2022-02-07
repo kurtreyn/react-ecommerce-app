@@ -82,24 +82,12 @@ function Checkout({ cart, order, onCaptureCheckout, error }) {
       <>
         <div>
           <Typography variant="h5">
-            Thank you for your purchase, {order.customer.firstname}{' '}
-            {order.customer.lastname}!
+            Thank you for your purchase, {order.customer.firstname}
           </Typography>
           <Divider className={classes.divider} />
           <Typography variant="subtitle2">
             Order ref: {order.customer_reference}
           </Typography>
-        </div>
-        <br />
-        <Button component={Link} variant="outlined" type="button" to="/">
-          Back to Home
-        </Button>
-      </>
-    ) : isFinished ? (
-      <>
-        <div>
-          <Typography variant="h5">Thank you for your purchase</Typography>
-          <Divider className={classes.divider} />
         </div>
         <br />
         <Button component={Link} variant="outlined" type="button" to="/">
@@ -115,7 +103,7 @@ function Checkout({ cart, order, onCaptureCheckout, error }) {
   if (error) {
     Confirmation = () => (
       <>
-        <Typography variant="h5">Error: {error}</Typography>
+        <Typography variant="h5">Error Occurred: {error}</Typography>
         <br />
         <Button component={Link} variant="outlined" type="button" to="/">
           Back to home
