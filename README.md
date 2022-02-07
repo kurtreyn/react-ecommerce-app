@@ -4,8 +4,8 @@
 
 ### Notable Dependencies
 
-- material-ui: for the interface
-- stripe: for card transactions
+- material-ui: for the interface & layout
+- stripe: API for card transactions
 - commerce.js: API for products database
 
 ### Fake credit card to use for checkout
@@ -16,5 +16,7 @@ CVC: 242
 Zip: 42424
 
 ## Note:
-- There is a bug that appears after entering payment information. Initially a message is rendered thanking the user for their purchase. Then an error message will appear stating the given data was invalid. The console log of the error is "Failed to load resource: the server responded with a status of 422 (). 
-{"status_code":422,"error":{"message":"The given data was invalid.","type":"unprocessable_entity","errors":{"payment.gateway":["The specified payment gateway is not available. Ensure it is configured, and you are using the appropriate API keys (e.g. sandbox or live)."
+
+- There is a bug that appears after entering payment information. Initially a message is rendered thanking the user for their purchase. Then an error message will appear stating the given data was invalid. The console log of the error is "Failed to load resource: the server responded with a status of 422 ().
+  {"status_code":422,"error":{"message":"The given data was invalid.","type":"unprocessable_entity","errors":{"payment.gateway":["The specified payment gateway is not available. Ensure it is configured, and you are using the appropriate API keys (e.g. sandbox or live)."
+- FIXED the bug. The error was due to not using the sandbox public key for CommerceJS API.
